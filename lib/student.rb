@@ -24,7 +24,7 @@ attr_accessor :id, :name, :grade
       DROPS TABLE students
         SQL
     DB[:conn].execute(sql) 
-end
+  end
   
   
   
