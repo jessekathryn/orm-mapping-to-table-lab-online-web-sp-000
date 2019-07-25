@@ -21,7 +21,7 @@ attr_accessor :id, :name, :grade
   
   def self.drop_table
     sql =  <<-SQL 
-      DROPS TABLE students
+      DROPS TABLE students()
         SQL
     DB[:conn].execute(sql) 
 end
