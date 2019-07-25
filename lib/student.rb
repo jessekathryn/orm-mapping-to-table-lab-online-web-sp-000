@@ -28,7 +28,7 @@ attr_accessor :id, :name, :grade
   
   def save
     sql = <<-SQL
-      INSERT INTO songs (name, grade) 
+      INSERT INTO students (name, grade) 
       VALUES (?, ?)
     SQL
  
