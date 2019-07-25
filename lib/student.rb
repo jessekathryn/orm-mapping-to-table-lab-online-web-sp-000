@@ -38,9 +38,9 @@ attr_accessor :id, :name, :grade
   end
  
    def self.create(name:, grade:)
-    student = Student.new(name, grade)
-    student.save
-    student
+    students = Student.new(name, grade)
+    students.save
+    students
   end
 end
 
