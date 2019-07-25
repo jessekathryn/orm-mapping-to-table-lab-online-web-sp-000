@@ -10,7 +10,7 @@ attr_accessor :id, :name, :grade
   
   def self.create_table
     sql =  <<-SQL 
-      CREATE TABLE IF NOT EXISTS students (
+      CREATE TABLE IF NOT EXISTS student (
         id INTEGER PRIMARY KEY, 
         name TEXT, 
         grade INTEGER
@@ -21,14 +21,14 @@ attr_accessor :id, :name, :grade
   
   def self.drop_table
     sql =  <<-SQL 
-      DROPS TABLE students
+      DROPS TABLE student
         SQL
     DB[:conn].execute(sql) 
   end
   
   def save
     sql = <<-SQL
-      INSERT INTO students (name, grade) 
+      INSERT INTO student (name, grade) 
       VALUES (?, ?)
     SQL
  
@@ -37,7 +37,12 @@ attr_accessor :id, :name, :grade
     @id = DB[:conn].execute("SELECT last_insert_rowid() FROM students")[0][0]
   end
  
-  
+   def self.create(name:, grade:)
+    student = Students.new(name, grade)
+    student.save
+    student
+  end
+end
   # Remember, you can access your database connection anywhere in this class
   #  with DB[:conn]  
   
